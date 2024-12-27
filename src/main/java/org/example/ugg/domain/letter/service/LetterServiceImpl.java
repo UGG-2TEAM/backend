@@ -26,25 +26,25 @@ public class LetterServiceImpl  implements LetterService {
 
 		Long emotionId;
 		switch (diary.getEmotion()) {
-			case "Angry":
+			case "angry":
 				emotionId = 1L;
 				break;
-			case "Disgust":
+			case "disgust":
 				emotionId = 2L;
 				break;
-			case "Fear":
+			case "fear":
 				emotionId = 3L;
 				break;
-			case "Happy":
+			case "happy":
 				emotionId = 4L;
 				break;
-			case "Sad":
+			case "sad":
 				emotionId = 5L;
 				break;
-			case "Surprise":
+			case "surprise":
 				emotionId = 6L;
 				break;
-			case "Neutral":
+			case "neutral":
 				emotionId = 7L;
 				break;
 			default:
@@ -71,25 +71,25 @@ public class LetterServiceImpl  implements LetterService {
 			.orElseThrow(() -> new IllegalArgumentException("편지를 찾을 수 없습니다: " + letterId));
 		Long emotionId;
 		switch (letter.getDiary().getEmotion()) {
-			case "Angry":
+			case "angry":
 				emotionId = 1L;
 				break;
-			case "Disgust":
+			case "disgust":
 				emotionId = 2L;
 				break;
-			case "Fear":
+			case "fear":
 				emotionId = 3L;
 				break;
-			case "Happy":
+			case "happy":
 				emotionId = 4L;
 				break;
-			case "Sad":
+			case "sad":
 				emotionId = 5L;
 				break;
-			case "Surprise":
+			case "surprise":
 				emotionId = 6L;
 				break;
-			case "Neutral":
+			case "neutral":
 				emotionId = 7L;
 				break;
 			default:

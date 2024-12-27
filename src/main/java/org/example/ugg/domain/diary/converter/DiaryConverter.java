@@ -54,13 +54,13 @@ public class DiaryConverter {
 
 	public static DiaryResponseDTO.analysisDTO toAnalysisDTO(Map<String, Long> emotionCounts, double totalDiaries) {
 		return DiaryResponseDTO.analysisDTO.builder()
-			.angry((double) emotionCounts.getOrDefault("Angry", 0L) * 100 / totalDiaries)
-			.disgust((double) emotionCounts.getOrDefault("Disgust", 0L) * 100 / totalDiaries)
-			.fear((double) emotionCounts.getOrDefault("Fear", 0L) * 100 / totalDiaries)
-			.happy((double) emotionCounts.getOrDefault("Happy", 0L) * 100 / totalDiaries)
-			.sad((double) emotionCounts.getOrDefault("Sad", 0L) * 100 / totalDiaries)
-			.surprise((double) emotionCounts.getOrDefault("Surprise", 0L) * 100 / totalDiaries)
-			.neutral((double) emotionCounts.getOrDefault("Neutral", 0L) * 100 / totalDiaries)
+			.angry((double) emotionCounts.getOrDefault("angry", 0L) * 100 / totalDiaries)
+			.disgust((double) emotionCounts.getOrDefault("disgust", 0L) * 100 / totalDiaries)
+			.fear((double) emotionCounts.getOrDefault("fear", 0L) * 100 / totalDiaries)
+			.happy((double) emotionCounts.getOrDefault("happy", 0L) * 100 / totalDiaries)
+			.sad((double) emotionCounts.getOrDefault("sad", 0L) * 100 / totalDiaries)
+			.surprise((double) emotionCounts.getOrDefault("surprise", 0L) * 100 / totalDiaries)
+			.neutral((double) emotionCounts.getOrDefault("neutral", 0L) * 100 / totalDiaries)
 			.build();
 	}
 }

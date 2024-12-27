@@ -59,25 +59,25 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 			.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + diaryId));
 		Long frameId;
 		switch (diary.getEmotion()) {
-			case "Angry":
+			case "angry":
 				frameId = 1L;
 				break;
-			case "Disgust":
+			case "disgust":
 				frameId = 2L;
 				break;
-			case "Fear":
+			case "fear":
 				frameId = 3L;
 				break;
-			case "Happy":
+			case "happy":
 				frameId = 4L;
 				break;
-			case "Sad":
+			case "sad":
 				frameId = 5L;
 				break;
-			case "Surprise":
+			case "surprise":
 				frameId = 6L;
 				break;
-			case "Neutral":
+			case "neutral":
 				frameId = 7L;
 				break;
 			default:
