@@ -15,12 +15,12 @@ spring:
 
   kakao:
     auth:
-      client: ${KAKAO_CLIENT}
-      redirect: ${KAKAO_REDIRECT}
+      client: 8c083e5570d872ef9ae3aabc50c574b4
+      redirect: https://15.165.210.241/api/v1/users/auth/login/kakao
 
 jwt:
   expiration_time: 86400000
-  secret: ${JWT_SECRET}
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
 
 server:
   port: 8080
