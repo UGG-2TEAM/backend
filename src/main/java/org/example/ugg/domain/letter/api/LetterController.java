@@ -37,4 +37,11 @@ public class LetterController {
 		LetterResponseDTO.letterListDTO result = letterService.getLetterList(userDetails);
 		return ResponseEntity.ok(result);
 	}
+
+	@Operation(summary="편지 개별 조회 (편지 ID로)",description = "편지 개별 조회 (편지 ID로)")
+	@GetMapping("/letter")
+	public ResponseEntity<LetterResponseDTO.letterResultDTO> getLetterById(@RequestParam("letterId") Long letterId){
+		LetterResponseDTO.letterResultDTO result = letterService.getLetterById(letterId);
+		return ResponseEntity.ok(result);
+	}
 }

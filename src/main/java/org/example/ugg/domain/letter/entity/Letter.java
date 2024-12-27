@@ -34,6 +34,10 @@ public class Letter extends FullTimeAuditEntity {
 	@Column(columnDefinition = "TEXT")
 	private String content;
 
+	@OneToOne
+	@JoinColumn(name = "diary_id", nullable = false)
+	private Diary diary;
+
 
 
 

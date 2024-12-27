@@ -55,8 +55,7 @@ public class Diary extends FullTimeAuditEntity {
 	private String frameUrl;
 
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "letter_id", nullable = true) // Letter와 연결된 외래 키
+	@OneToOne(mappedBy = "diary", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Letter letter;
 
 	@ManyToOne(fetch = FetchType.LAZY)

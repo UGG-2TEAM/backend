@@ -6,6 +6,8 @@ import org.example.ugg.domain.diary.entity.Diary;
 import org.example.ugg.domain.diary.repository.DiaryRepository;
 import org.example.ugg.domain.letter.converter.LetterConverter;
 import org.example.ugg.domain.letter.dto.LetterResponseDTO;
+import org.example.ugg.domain.letter.entity.Letter;
+import org.example.ugg.domain.letter.repository.LetterRepository;
 import org.example.ugg.global.config.security.CustomUserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LetterServiceImpl  implements LetterService {
 	private final DiaryRepository diaryRepository;
+	private final LetterRepository letterRepository;
+
 	@Override
 	public LetterResponseDTO.letterResultDTO getLetter(Long diaryId) {
 		Diary diary = diaryRepository.findById(diaryId)
@@ -54,9 +58,49 @@ public class LetterServiceImpl  implements LetterService {
 			.build();
 
 	}
+
 	@Override
-	public LetterResponseDTO.letterListDTO getLetterList(CustomUserDetails userDetails){
+	public LetterResponseDTO.letterListDTO getLetterList(CustomUserDetails userDetails) {
 		List<Diary> diaryList = diaryRepository.findByUserId(userDetails.getUser().getUserId());
 		return LetterConverter.letterListDTO(diaryList);
+	}
+
+	@Override
+	public LetterResponseDTO.letterResultDTO getLetterById(Long letterId) {
+		Letter letter = letterRepository.findById(letterId)
+			.orElseThrow(() -> new IllegalArgumentException("편지를 찾을 수 없습니다: " + letterId));
+		Long emotionId;
+		switch (letter.getDiary().getEmotion()) {
+			case "Angry":
+				emotionId = 1L;
+				break;
+			case "Disgust":
+				emotionId = 2L;
+				break;
+			case "Fear":
+				emotionId = 3L;
+				break;
+			case "Happy":
+				emotionId = 4L;
+				break;
+			case "Sad":
+				emotionId = 5L;
+				break;
+			case "Surprise":
+				emotionId = 6L;
+				break;
+			case "Neutral":
+				emotionId = 7L;
+				break;
+			default:
+				throw new IllegalArgumentException("지원하지 않는 감정입니다: " + letter.getDiary().getEmotion());
+		}
+
+		return LetterResponseDTO.letterResultDTO.builder()
+			.diaryId(letter.getDiary().getId())
+			.letterId(letter.getId())
+			.emotion(emotionId)
+			.content(letter.getContent())
+			.build();
 	}
 }

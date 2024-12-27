@@ -9,4 +9,6 @@ public interface LetterService {
 
 
 	LetterResponseDTO.letterListDTO getLetterList(CustomUserDetails userDetails);
+
+	LetterResponseDTO.letterResultDTO getLetterById(Long letterId);
 }
