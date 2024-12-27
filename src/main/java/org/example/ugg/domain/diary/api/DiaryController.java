@@ -28,16 +28,16 @@ public class DiaryController {
 
 	@Operation(summary = "일기 작성 API", description = "일기 작성")
 	@PostMapping("/")
-	public ResponseEntity<DiaryResponseDTO.diaryResultDTO> writeDiary(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody
+	public ResponseEntity<DiaryResponseDTO.diaryResultDTO> writeDiary( @RequestBody
 		DiaryRequestDTO.writeDiaryDTO writeDiaryDTO) {
-		DiaryResponseDTO.diaryResultDTO result = diaryCommandService.writeDiary(userDetails, writeDiaryDTO);
+		DiaryResponseDTO.diaryResultDTO result = diaryCommandService.writeDiary( writeDiaryDTO);
 		return ResponseEntity.ok(result);
 	}
 
 	@Operation(summary = "일기 상세정보 API", description = "일기 상세정보 조회")
 	@GetMapping("/")
-	public ResponseEntity<DiaryResponseDTO.diaryDetailDTO> getDiary(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("diaryId") Long diaryId) {
-		DiaryResponseDTO.diaryDetailDTO result = diaryCommandService.getDiary(userDetails, diaryId);
+	public ResponseEntity<DiaryResponseDTO.diaryDetailDTO> getDiary( @RequestParam("diaryId") Long diaryId) {
+		DiaryResponseDTO.diaryDetailDTO result = diaryCommandService.getDiary(diaryId);
 		return ResponseEntity.ok(result);
 	}
 
@@ -50,15 +50,15 @@ public class DiaryController {
 
 	@Operation(summary="프레임 이미지 저장 API", description="프레임 이미지 저장")
 	@PostMapping("/frame")
-	public ResponseEntity<DiaryResponseDTO.frameResultDTO> saveFrameImage(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody DiaryRequestDTO.saveFrameImageDTO saveFrameImageDTO) {
-		DiaryResponseDTO.frameResultDTO result = diaryCommandService.saveFrameImage(userDetails, saveFrameImageDTO);
+	public ResponseEntity<DiaryResponseDTO.frameResultDTO> saveFrameImage(@RequestBody DiaryRequestDTO.saveFrameImageDTO saveFrameImageDTO) {
+		DiaryResponseDTO.frameResultDTO result = diaryCommandService.saveFrameImage( saveFrameImageDTO);
 		return ResponseEntity.ok(result);
 	}
 
 	@Operation(summary="감정 분석 기반 프레임 값 조회 API", description = "감정 분석 기반 프레임 값 조회")
 	@GetMapping("/result")
-	public ResponseEntity<DiaryResponseDTO.emotionResultDTO> getFrameImage(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("diaryId") Long diaryId) {
-		DiaryResponseDTO.emotionResultDTO result = diaryCommandService.getframeResult(userDetails, diaryId);
+	public ResponseEntity<DiaryResponseDTO.emotionResultDTO> getFrameImage( @RequestParam("diaryId") Long diaryId) {
+		DiaryResponseDTO.emotionResultDTO result = diaryCommandService.getframeResult(diaryId);
 		return ResponseEntity.ok(result);
 	}
 

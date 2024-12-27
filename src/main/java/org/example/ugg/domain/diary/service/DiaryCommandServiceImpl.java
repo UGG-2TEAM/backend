@@ -1,5 +1,6 @@
 package org.example.ugg.domain.diary.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -9,11 +10,11 @@ import org.example.ugg.domain.diary.dto.DiaryRequestDTO;
 import org.example.ugg.domain.diary.dto.DiaryResponseDTO;
 import org.example.ugg.domain.diary.entity.Diary;
 import org.example.ugg.domain.diary.repository.DiaryRepository;
-import org.example.ugg.domain.user.dto.UserResponseDTO;
-import org.example.ugg.domain.user.repository.UserRepository;
-import org.example.ugg.domain.user.service.UserCommandService;
+
 import org.example.ugg.global.config.security.CustomUserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,8 +23,10 @@ import lombok.RequiredArgsConstructor;
 public class DiaryCommandServiceImpl implements DiaryCommandService {
 	private final DiaryRepository diaryRepository;
 
+
+
 	@Override
-	public DiaryResponseDTO.diaryResultDTO writeDiary(CustomUserDetails userDetails, DiaryRequestDTO.writeDiaryDTO writeDiaryDTO) {
+	public DiaryResponseDTO.diaryResultDTO writeDiary(DiaryRequestDTO.writeDiaryDTO writeDiaryDTO) {
 		Diary diary = diaryRepository.findById(writeDiaryDTO.getDiaryId())
 			.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + writeDiaryDTO.getDiaryId()));;
 		diary.setContent(writeDiaryDTO.getContent());
@@ -32,7 +35,7 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 	}
 
 	@Override
-	public DiaryResponseDTO.diaryDetailDTO getDiary(CustomUserDetails userDetails, Long diaryId) {
+	public DiaryResponseDTO.diaryDetailDTO getDiary(Long diaryId) {
 		Diary diary = diaryRepository.findById(diaryId)
 			.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + diaryId));
 		return DiaryConverter.toDiaryDetailDTO(diary);
@@ -45,7 +48,7 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 	}
 
 	@Override
-	public DiaryResponseDTO.frameResultDTO saveFrameImage(CustomUserDetails userDetails, DiaryRequestDTO.saveFrameImageDTO frameImageDTO){
+	public DiaryResponseDTO.frameResultDTO saveFrameImage(DiaryRequestDTO.saveFrameImageDTO frameImageDTO){
 		Diary diary = diaryRepository.findById(frameImageDTO.getDiaryId())
 			.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + frameImageDTO.getDiaryId()));
 		diary.setFrameUrl(frameImageDTO.getFrameImage());
@@ -54,7 +57,7 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 	}
 
 	@Override
-	public DiaryResponseDTO.emotionResultDTO getframeResult(CustomUserDetails userDetails, Long diaryId){
+	public DiaryResponseDTO.emotionResultDTO getframeResult( Long diaryId){
 		Diary diary = diaryRepository.findById(diaryId)
 			.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + diaryId));
 		Long frameId;
@@ -87,7 +90,7 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 		return DiaryResponseDTO.emotionResultDTO.builder()
 			.frameId(frameId)
 			.diaryId(diaryId)
-			.imageUrl(diary.getImageUrl())
+			.imageUrl(diary.getBase64())
 			.build();
 
 	}
@@ -117,6 +120,21 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 		// 감정 비율 계산 및 반환
 		return DiaryConverter.toAnalysisDTO(emotionCounts, (double) totalDiaries);
 	}
+
+	// @Override
+	// public DiaryResponseDTO.frameResultDTO saveFrameImage1(MultipartFile image,
+	// 	DiaryRequestDTO.saveFrameImageDTO frameImageDTO) throws
+	// 	IOException {
+	// 	Diary diary = diaryRepository.findById(frameImageDTO.getDiaryId())
+	// 		.orElseThrow(() -> new IllegalArgumentException("다이어리를 찾을 수 없습니다: " + frameImageDTO.getDiaryId()));
+	// 	if(!image.isEmpty()) {
+	// 		String storedFileName = s3Uploader.upload(image,"images");
+	// 		diary.setFrameUrl(storedFileName);
+	// 	}
+	// 	diary.setFrameUrl(frameImageDTO.getFrameImage());
+	// 	diaryRepository.save(diary);
+	// 	return DiaryConverter.toFrameResultDTO(diary);
+	// }
 
 
 }

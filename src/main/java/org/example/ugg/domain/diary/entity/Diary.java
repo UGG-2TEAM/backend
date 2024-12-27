@@ -40,7 +40,7 @@ public class Diary extends FullTimeAuditEntity {
 
 	@Comment("이미지_URL")
 	@Column(columnDefinition = "varchar(255)", nullable = false, unique = true)
-	private String imageUrl;
+	private String base64;
 
 	@Comment("감정")
 	@Column(columnDefinition = "varchar(255)", nullable = false)
