@@ -1,10 +1,12 @@
 package org.example.ugg.domain.diary.entity;
 
+import org.example.ugg.domain.letter.entity.Letter;
 import org.example.ugg.domain.user.common.FullTimeAuditEntity;
 import org.example.ugg.domain.user.entity.User;
 import org.example.ugg.domain.user.entity.UserRole;
 import org.hibernate.annotations.Comment;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +17,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,10 +55,15 @@ public class Diary extends FullTimeAuditEntity {
 	private String frameUrl;
 
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "letter_id", nullable = true) // Letter와 연결된 외래 키
+	private Letter letter;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
+
+
 }
 
 

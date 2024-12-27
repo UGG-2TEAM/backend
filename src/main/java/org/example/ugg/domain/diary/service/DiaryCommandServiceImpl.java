@@ -93,27 +93,29 @@ public class DiaryCommandServiceImpl implements DiaryCommandService {
 	}
 
 	@Override
-	public DiaryResponseDTO.analysisDTO getAnalysis(CustomUserDetails userDetails, Integer year, Integer month){
-		List<Diary> diaries = diaryRepository.findDiariesByUserIdAndYearAndMonth(userDetails.getUser().getUserId(),year, month);
+	public DiaryResponseDTO.analysisDTO getAnalysis(CustomUserDetails userDetails, Integer year, Integer month) {
+		List<Diary> diaries = diaryRepository.findDiariesByUserIdAndYearAndMonth(userDetails.getUser().getUserId(), year, month);
 
 		// 전체 다이어리 개수
 		long totalDiaries = diaries.size();
 		if (totalDiaries == 0) {
 			return DiaryResponseDTO.analysisDTO.builder()
-				.angry(0L)
-				.disgust(0L)
-				.fear(0L)
-				.happy(0L)
-				.sad(0L)
-				.surprise(0L)
-				.neutral(0L)
+				.angry(0.0)
+				.disgust(0.0)
+				.fear(0.0)
+				.happy(0.0)
+				.sad(0.0)
+				.surprise(0.0)
+				.neutral(0.0)
 				.build();
 		}
 
 		// 감정별 개수 계산
 		Map<String, Long> emotionCounts = diaries.stream()
 			.collect(Collectors.groupingBy(Diary::getEmotion, Collectors.counting()));
-		return DiaryConverter.toAnalysisDTO(emotionCounts, totalDiaries);
+
+		// 감정 비율 계산 및 반환
+		return DiaryConverter.toAnalysisDTO(emotionCounts, (double) totalDiaries);
 	}
 
 

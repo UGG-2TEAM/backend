@@ -15,4 +15,7 @@ public interface DiaryRepository extends JpaRepository<Diary, Long> {
 	List<Diary> findDiariesByUserIdAndYearAndMonth(@Param("userId") Long userId,
 		@Param("year") int year,
 		@Param("month") int month);
+
+	@Query("SELECT d FROM Diary d LEFT JOIN FETCH d.letter WHERE d.user.id = :userId")
+	List<Diary> findByUserId(@Param("userId") Long userId);
 }

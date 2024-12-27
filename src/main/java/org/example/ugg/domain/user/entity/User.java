@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.example.ugg.domain.diary.entity.Diary;
+import org.example.ugg.domain.letter.entity.Letter;
 import org.example.ugg.domain.user.common.FullTimeAuditEntity;
 import org.hibernate.annotations.Comment;
 
@@ -16,6 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,6 +55,7 @@ public class User extends FullTimeAuditEntity {
 	public void encodedPassword(String password) {
 		this.password = password;
 	}
+
 
 
 

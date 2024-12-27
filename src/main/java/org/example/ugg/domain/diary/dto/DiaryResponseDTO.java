@@ -72,13 +72,13 @@ public class DiaryResponseDTO {
 	@NoArgsConstructor
 	@AllArgsConstructor
 	public static class analysisDTO {
-		Long angry;
-		Long disgust;
-		Long fear;
-		Long happy;
-		Long sad;
-		Long surprise;
-		Long neutral;
+		Double angry;
+		Double disgust;
+		Double fear;
+		Double happy;
+		Double sad;
+		Double surprise;
+		Double neutral;
 	}
 
 
