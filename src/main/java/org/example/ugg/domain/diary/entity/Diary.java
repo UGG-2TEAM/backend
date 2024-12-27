@@ -47,6 +47,12 @@ public class Diary extends FullTimeAuditEntity {
 	@Column(columnDefinition = "TEXT")
 	private String content;
 
+	@Comment("프레임이미지_URL")
+	@Column(columnDefinition = "varchar(255)", nullable = false, unique = true)
+	private String frameUrl;
+
+
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;

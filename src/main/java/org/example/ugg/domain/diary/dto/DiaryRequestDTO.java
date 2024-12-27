@@ -9,4 +9,10 @@ public class DiaryRequestDTO {
 		private Long diaryId;
 		private String content;
 	}
+
+	@Getter
+	public static class saveFrameImageDTO{
+		private Long diaryId;
+		private String frameImage;
+	}
 }

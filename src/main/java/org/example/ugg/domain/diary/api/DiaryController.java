@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @Tag(name = "3. [일기로직]", description = "일기 API")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/diaries")
+@RequestMapping("/api/v1/diary")
 public class DiaryController {
 	private final DiaryCommandService diaryCommandService;
 
@@ -33,5 +33,42 @@ public class DiaryController {
 		DiaryResponseDTO.diaryResultDTO result = diaryCommandService.writeDiary(userDetails, writeDiaryDTO);
 		return ResponseEntity.ok(result);
 	}
+
+	@Operation(summary = "일기 상세정보 API", description = "일기 상세정보 조회")
+	@GetMapping("/")
+	public ResponseEntity<DiaryResponseDTO.diaryDetailDTO> getDiary(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("diaryId") Long diaryId) {
+		DiaryResponseDTO.diaryDetailDTO result = diaryCommandService.getDiary(userDetails, diaryId);
+		return ResponseEntity.ok(result);
+	}
+
+	@Operation(summary="캘린더 정보 조회 API", description="캘린더 정보 조회")
+	@GetMapping("/list")
+	public ResponseEntity<DiaryResponseDTO.diaryListDTO> getDiaryList(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("year") int year, @RequestParam("month") int month) {
+		DiaryResponseDTO.diaryListDTO result = diaryCommandService.getDiaryList(userDetails, year, month);
+		return ResponseEntity.ok(result);
+	}
+
+	@Operation(summary="프레임 이미지 저장 API", description="프레임 이미지 저장")
+	@PostMapping("/frame")
+	public ResponseEntity<DiaryResponseDTO.frameResultDTO> saveFrameImage(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestBody DiaryRequestDTO.saveFrameImageDTO saveFrameImageDTO) {
+		DiaryResponseDTO.frameResultDTO result = diaryCommandService.saveFrameImage(userDetails, saveFrameImageDTO);
+		return ResponseEntity.ok(result);
+	}
+
+	@Operation(summary="감정 분석 기반 프레임 값 조회 API", description = "감정 분석 기반 프레임 값 조회")
+	@GetMapping("/result")
+	public ResponseEntity<DiaryResponseDTO.emotionResultDTO> getFrameImage(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("diaryId") Long diaryId) {
+		DiaryResponseDTO.emotionResultDTO result = diaryCommandService.getframeResult(userDetails, diaryId);
+		return ResponseEntity.ok(result);
+	}
+
+	@Operation(summary="감정 분석 결과", description="감정 분석 결과")
+	@GetMapping("/analysis")
+	public ResponseEntity<DiaryResponseDTO.analysisDTO> getAnalysis(@AuthenticationPrincipal CustomUserDetails userDetails, @RequestParam("year") int year, @RequestParam("month") int month) {
+		DiaryResponseDTO.analysisDTO result = diaryCommandService.getAnalysis(userDetails, year, month);
+		return ResponseEntity.ok(result);
+	}
+
+
 
 }
