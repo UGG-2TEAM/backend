@@ -1,21 +1,20 @@
-package org.example.ugg.domain.user.entity;
+package org.example.ugg.domain.diary.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.example.ugg.domain.diary.entity.Diary;
 import org.example.ugg.domain.user.common.FullTimeAuditEntity;
+import org.example.ugg.domain.user.entity.User;
+import org.example.ugg.domain.user.entity.UserRole;
 import org.hibernate.annotations.Comment;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,30 +29,30 @@ import lombok.Setter;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 
-public class User extends FullTimeAuditEntity {
+public class Diary extends FullTimeAuditEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Comment("아이디")
+	@Comment("이미지_URL")
 	@Column(columnDefinition = "varchar(255)", nullable = false, unique = true)
-	private String account;
+	private String imageUrl;
 
-	@Comment("비밀번호")
+	@Comment("감정")
 	@Column(columnDefinition = "varchar(255)", nullable = false)
-	private String password;
+	private String emotion;
 
-	@Enumerated(EnumType.STRING)
-	private UserRole role;
+	@Comment("내용")
+	@Column(columnDefinition = "TEXT")
+	private String content;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Diary> diaries = new ArrayList<>();
-
-	public void encodedPassword(String password) {
-		this.password = password;
-	}
-
-
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 }
+
+
+
+
+
