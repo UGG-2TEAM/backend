@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.ugg.UggApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-27T22:36:43" hostname="DESKTOP-5NABS7R" time="1.387">
+<testsuite name="org.example.ugg.UggApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-27T22:44:48" hostname="DESKTOP-5NABS7R" time="4.88">
   <properties/>
-  <testcase name="contextLoads()" classname="org.example.ugg.UggApplicationTests" time="1.387"/>
-  <system-out><![CDATA[07:36:21.218 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.ugg.UggApplicationTests]: UggApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-07:36:21.656 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.ugg.UggApplication for test class org.example.ugg.UggApplicationTests
+  <testcase name="contextLoads()" classname="org.example.ugg.UggApplicationTests" time="4.88"/>
+  <system-out><![CDATA[07:44:30.913 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.ugg.UggApplicationTests]: UggApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+07:44:31.247 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.ugg.UggApplication for test class org.example.ugg.UggApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,18 +14,18 @@
 
  :: Spring Boot ::                (v3.4.1)
 
-2024-12-28T07:36:23.087+09:00  INFO 23468 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : Starting UggApplicationTests using Java 17.0.8 with PID 23468 (started by Administrator in C:\Users\Administrator\Desktop\uggthon\UGG)
-2024-12-28T07:36:23.089+09:00  INFO 23468 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : No active profile set, falling back to 1 default profile: "default"
-2024-12-28T07:36:25.551+09:00  INFO 23468 --- [UGG] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-28T07:36:25.811+09:00  INFO 23468 --- [UGG] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 231 ms. Found 3 JPA repository interfaces.
-2024-12-28T07:36:29.081+09:00  INFO 23468 --- [UGG] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-28T07:36:29.512+09:00  INFO 23468 --- [UGG] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2024-12-28T07:36:29.787+09:00  INFO 23468 --- [UGG] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-28T07:36:31.219+09:00  INFO 23468 --- [UGG] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-28T07:36:31.363+09:00  INFO 23468 --- [UGG] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-28T07:36:32.240+09:00  INFO 23468 --- [UGG] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33765d22
-2024-12-28T07:36:32.245+09:00  INFO 23468 --- [UGG] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-28T07:36:32.479+09:00  INFO 23468 --- [UGG] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2024-12-28T07:44:32.451+09:00  INFO 19236 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : Starting UggApplicationTests using Java 17.0.8 with PID 19236 (started by Administrator in C:\Users\Administrator\Desktop\uggthon\UGG)
+2024-12-28T07:44:32.456+09:00  INFO 19236 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-12-28T07:44:35.678+09:00  INFO 19236 --- [UGG] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-28T07:44:35.901+09:00  INFO 19236 --- [UGG] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 199 ms. Found 3 JPA repository interfaces.
+2024-12-28T07:44:37.283+09:00  INFO 19236 --- [UGG] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-28T07:44:37.430+09:00  INFO 19236 --- [UGG] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2024-12-28T07:44:37.505+09:00  INFO 19236 --- [UGG] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-28T07:44:38.099+09:00  INFO 19236 --- [UGG] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-28T07:44:38.159+09:00  INFO 19236 --- [UGG] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-28T07:44:38.772+09:00  INFO 19236 --- [UGG] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@228958a
+2024-12-28T07:44:38.775+09:00  INFO 19236 --- [UGG] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-28T07:44:38.971+09:00  INFO 19236 --- [UGG] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.39
@@ -33,12 +33,12 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2024-12-28T07:36:35.383+09:00  INFO 23468 --- [UGG] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-28T07:36:35.580+09:00  INFO 23468 --- [UGG] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-28T07:36:36.145+09:00  INFO 23468 --- [UGG] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-28T07:36:38.776+09:00  WARN 23468 --- [UGG] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-28T07:36:38.849+09:00  INFO 23468 --- [UGG] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailService
-2024-12-28T07:36:43.670+09:00  INFO 23468 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : Started UggApplicationTests in 21.429 seconds (process running for 25.476)
+2024-12-28T07:44:41.641+09:00  INFO 19236 --- [UGG] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-28T07:44:41.852+09:00  INFO 19236 --- [UGG] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-28T07:44:42.477+09:00  INFO 19236 --- [UGG] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-28T07:44:44.628+09:00  WARN 19236 --- [UGG] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-28T07:44:44.671+09:00  INFO 19236 --- [UGG] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailService
+2024-12-28T07:44:48.061+09:00  INFO 19236 --- [UGG] [    Test worker] org.example.ugg.UggApplicationTests      : Started UggApplicationTests in 16.352 seconds (process running for 19.565)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
