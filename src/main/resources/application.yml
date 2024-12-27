@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ugg
-    username: root
-    password: 1234
+    url: jdbc:mysql://uggdb.c9ocs4kg22yt.ap-northeast-2.rds.amazonaws.com:3306/uggDB
+    username: admin
+    password: gbvsfy7z!
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -12,6 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
   kakao:
     auth:
       client: ${KAKAO_CLIENT}
@@ -20,8 +21,6 @@ spring:
 jwt:
   expiration_time: 86400000
   secret: ${JWT_SECRET}
-
-
 
 server:
   port: 8080
