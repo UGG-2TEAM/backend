@@ -24,14 +24,3 @@ jwt:
 
 server:
   port: 8080
-cloud:
-  aws:
-    s3:
-      bucket: ugg-service
-    region:
-      static: ap-northeast-2
-    stack:
-      auto: false
-    credentials:
-      accessKey: AKIAU6GDW7QBNUW5FVNU
-      secretKey: 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
