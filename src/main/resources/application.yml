@@ -16,7 +16,7 @@ spring:
   kakao:
     auth:
       client: 8c083e5570d872ef9ae3aabc50c574b4
-      redirect: https://15.165.210.241/api/v1/users/auth/login/kakao
+      redirect: https://15.165.210.241:8080/api/v1/users/auth/login/kakao
 
 jwt:
   expiration_time: 86400000
